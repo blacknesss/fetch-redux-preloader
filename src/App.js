@@ -3,21 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadTodos } from "./actions";
 
 function App() {
-  const todos = useSelector(state => state)
+  const todos = useSelector(state => state.todos)
+  const loading = useSelector(state => state.loading)
+  
   const dispatch = useDispatch()
 
   useEffect(() =>{
     dispatch(loadTodos())
-  })
+  }, [])
 
 
   return (
-    <div className="App">
-      {todos.map(item =>{
-        return (
-          <div>{item.title}</div>
-        )
-      })}
+    <div style={{textAlign: "center"}} className="App">
+      {loading ? <div style={{fontSize: '30px'}}>loading...</div>:(
+        todos.map(item =>{
+          return (
+            <div>{item.title}</div>
+          )
+        })
+      )}
     </div>
   );
 }

@@ -7,13 +7,23 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 
-const initialState = []
+const initialState = {
+  todos: [],
+  loading: false
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'load':
-        return action.payload
-    
+      case 'todos/start':
+        return {
+          loading: true
+        }
+        
+      case 'todos/item':
+        return {
+          todos: action.payload
+        }
+
       default:
         return state;
     }
