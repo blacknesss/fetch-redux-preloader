@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadTodos } from "./actions";
-import Header from "./Header";
+import Header from "./components/Header";
+import ToDo from "./components/ToDo";
 
 function App() {
   const todos = useSelector(state => state.todos)
@@ -13,32 +14,37 @@ function App() {
     dispatch(loadTodos())
   }, [])
 
+  const removedTask = (id) =>{
+    dispatch({
+      type: 'REMOVED/TASK',
+      payload: [...todos.filter(item => item.id !== id)]
+    })
+  }
+
+  const changeToggle = (id) =>{
+    dispatch({
+      type: 'CHANGE/TOGGLE',
+      payload: [...todos.map(item => item.id === id ? {
+        ...item,
+        complete: !item.complete
+      } : {...item})]
+    })
+  }
 
   return (
     <div className="App">
         <Header/>
-      {loading ? <div style={{fontSize: '30px'}}>loading...</div>:(
-        todos.map(item =>{
-          return (
-            <div className="todo">
-              <div className="checkbox">
-                <input type="checkbox"/>
-              </div>
-
-              <div className="title">
-                {item.title}
-              </div>
-
-              <div className="action">
-                  <button className="btn">
-                      Delete
-                  </button>
-              </div>
-            </div>
-            
+      {loading ? <h1>loading...</h1> : 
+          (todos.map(item =>{
+            return(
+            <ToDo
+              key={item.id} 
+              item = {item} 
+              toggleTask={changeToggle} 
+              removedTask={removedTask}/>)
+            })
           )
-        })
-      )}
+      }
     </div>
   );
 }

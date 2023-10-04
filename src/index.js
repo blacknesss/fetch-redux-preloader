@@ -8,7 +8,9 @@ import thunk from 'redux-thunk';
 
 
 const initialState = {
-  todos: [],
+  todos: [
+    {complete: false},
+  ],
   loading: false
 }
 
@@ -24,6 +26,14 @@ const reducer = (state = initialState, action) => {
           todos: action.payload
         }
 
+      case 'REMOVED/TASK':
+        return {
+          todos: action.payload
+        }
+      case 'CHANGE/TOGGLE':
+        return {
+          todos: action.payload
+        }
       default:
         return state;
     }

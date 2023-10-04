@@ -35,6 +35,9 @@ code {
   flex: 1;
   margin-left: 20px;
 }
+.title-strike{
+  text-decoration: line-through;
+}
 .btn{
   border: 1px solid #ff4f4f;
   color: #ff4f4f;
