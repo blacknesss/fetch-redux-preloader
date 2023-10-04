@@ -33,7 +33,9 @@ const store = createStore(reducer, applyMiddleware(thunk))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <div className='container'>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </div>
 );
