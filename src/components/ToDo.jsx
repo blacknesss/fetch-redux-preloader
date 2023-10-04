@@ -6,7 +6,7 @@ function ToDo({item, toggleTask, removedTask}) {
          <div className="todo">
 
             <div className="checkbox">
-                <input type="checkbox" checked={item.complete}/>
+                <input disabled type="checkbox" checked={item.complete}/>
             </div>
     
             <div className={item.complete ? 'title-strike' : "title"} onClick={() => toggleTask(item.id)}>
@@ -15,7 +15,7 @@ function ToDo({item, toggleTask, removedTask}) {
     
             <div className="action">
                 <button className="btn" onClick={() => removedTask(item.id)}>
-                    Delete
+                    DEL
                 </button>
             </div>
 

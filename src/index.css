@@ -1,4 +1,5 @@
 body {
+  background-color: #8c97aa;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -34,9 +35,11 @@ code {
 .title{
   flex: 1;
   margin-left: 20px;
+  cursor: pointer;
 }
 .title-strike{
   text-decoration: line-through;
+  cursor: pointer;
 }
 .btn{
   border: 1px solid #ff4f4f;
@@ -51,4 +54,8 @@ code {
   background: #ff4f4f;
   color: #fff;
   transition: all .2s;
+}
+.checkbox{
+  border: 1px solid #000;
+  border-radius: 5px;
 }
